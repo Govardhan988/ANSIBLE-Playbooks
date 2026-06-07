@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Step 1: Install Git and Maven
+yum install git maven -y
+
+# Step 2: Add Jenkins Repository
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/rpm-stable/jenkins.repo
+
+
+# Step 3: Install Java and Jenkins
+sudo yum install java-21-amazon-corretto -y
+yum install jenkins -y
+
+# Step 4: Start Jenkins and Check Status
+sudo systemctl start jenkins.service
+sudo systemctl status jenkins.service
+
+# Step 5: Enable Auto Start on Boot
+sudo systemctl enable jenkins
+
